@@ -24,14 +24,31 @@ Bu proyekt, işçilərin idarə edilməsi üçün hazırlanmış, təmiz kod str
 
 ---
 
-## 📁 Qovluq Strukturu
+## 🛠️ Quraşdırılma və Verilənlər Bazasının İdxalı (Setup & DB Import)
 
-```text
+Layihəni lokal mühitdə işə salmaq üçün aşağıdakı addımları izləyin:
+
+### 1. Verilənlər Bazasının Hazırlanması
+1. `phpMyAdmin` panelinə daxil olun.
+2. `employee_management` adlı yeni bir verilənlər bazası yaradın.
+3. Yaradılmış bazanı seçin və **"Import" (İçə aktar)** menyusuna keçin.
+4. Layihənin ana qovluğunda yerləşən `employees.sql` faylını seçin və **"Go"** düyməsini sıxın.
+   *(Qeyd: Faylın daxilində cədvəl strukturu və test üçün 20 ədəd "fake" məlumat mövcuddur).*
+
+### 2. Konfiqurasiya
+`config/database.php` faylını açın və öz lokal server parametrlərinizə uyğun tənzimləyin:
+```php
+$host = 'localhost';
+$db   = 'employee_management';
+$user = 'root';
+$pass = '';
+
+
 ├── app/
 │   ├── Controllers/  # Biznes məntiqi (EmployeeController.php)
 │   └── Models/       # Verilənlər bazası əməliyyatları (Employee.php)
 ├── config/           # Database bağlantısı (database.php)
 ├── views/            # UI interfeysi və Modallar
 ├── index.php         # Giriş nöqtəsi və Router
-├── employees.sql     # Database skripti
+├── employees.sql     # Database skripti (Schema + Seed data)
 └── README.md         # Layihə sənədləşməsi
